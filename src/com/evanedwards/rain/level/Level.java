@@ -4,6 +4,7 @@ import java.awt.List;
 import java.util.ArrayList;
 
 import com.evanedwards.rain.entity.Entity;
+import com.evanedwards.rain.entity.Spawner;
 import com.evanedwards.rain.graphics.Screen;
 import com.evanedwards.rain.level.tile.Tile;
 
@@ -24,6 +25,8 @@ public class Level {
 
 	protected Level(String path) {
 		loadLevel(path);
+		
+		new Spawner(TileCoordinate.x(16), TileCoordinate.y(62), Spawner.Type.PARTICLE, 50);
 	}
 
 	protected void generateLevel() {

@@ -1,5 +1,6 @@
 package com.evanedwards.rain.entity.projectile;
 
+import com.evanedwards.rain.entity.particle.Particle;
 import com.evanedwards.rain.graphics.Screen;
 import com.evanedwards.rain.graphics.Sprite;
 
@@ -21,7 +22,11 @@ public class WizardProjectile extends Projectile {
 
 	public void update() {
 		move();
-		if(level.tileCollision(x, y, vectorX, vectorY, 4)) remove(this);
+		if(level.tileCollision(x, y, vectorX, vectorY, 4)) {
+			Particle p = new Particle((int)x, (int)y, 50, 500); //show projectiles
+			level.add(p); //show projectiles
+			remove(this);
+		}
 		if (projectileDistance() > range) remove(this);
 	}
 
